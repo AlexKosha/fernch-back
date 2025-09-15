@@ -3,10 +3,14 @@ import { ProgressModel } from "../models/progressModal.js";
 export const userProgressUnique = async (userId) =>
   await ProgressModel.findOne({ userId }, { _id: 0 });
 
-export const addProgressDB = (userId, progress) => {
-  const newProgress = ProgressModel.create({ userId, progress });
+export const addProgressDB = async (userId, progress) => {
+  const newProgressDoc = await ProgressModel.create({ userId, progress });
 
-  return newProgress;
+  // Повертаємо plain object без _id і метаданих
+  return {
+    userId: newProgressDoc.userId,
+    progress: newProgressDoc.progress,
+  };
 };
 
 export const updateProgressThemesDB = async (userId, progress) => {

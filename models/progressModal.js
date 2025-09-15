@@ -5,7 +5,6 @@ const WordSchema = new Schema({
   translationEN: String,
   translationUK: String,
   image: String,
-  audio: String,
   themeId: String,
   completed: [Number],
 });

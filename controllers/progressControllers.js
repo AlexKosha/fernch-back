@@ -22,11 +22,9 @@ export const addProgress = ctrlWrapper(async (req, res) => {
     await progressServices.deleteProgress(userId); // ⬅️ Реалізуй цю функцію в services
   }
 
-  const addProgress = await progressServices.addProgressDB(userId, progress);
+  const newProgress = await progressServices.addProgressDB(userId, progress);
 
-  const { _id, ...progressWithoutId } = addProgress;
-
-  res.status(200).json(progressWithoutId);
+  res.status(200).json(newProgress);
 });
 
 export const updateProgressThemes = ctrlWrapper(async (req, res) => {
@@ -49,7 +47,7 @@ export const updateProgressThemes = ctrlWrapper(async (req, res) => {
       incomingProgress
     );
 
-    const { _id, ...progressWithoutId } = addProgress;
+    const { _id, ...progressWithoutId } = newProgress;
 
     return res.status(201).json(progressWithoutId);
   }

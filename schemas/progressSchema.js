@@ -19,7 +19,6 @@ export const addProgressSchema = Joi.object({
               translationEN: Joi.string().required(),
               translationUK: Joi.string().required(),
               image: Joi.string().required(),
-              audio: Joi.string().allow(""),
               themeId: Joi.string().required(),
               completed: Joi.array()
                 .items(Joi.number().valid(1, 2, 3))
